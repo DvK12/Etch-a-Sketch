@@ -9,7 +9,7 @@ document.body.insertBefore(myButton, grid);
 
 function onButtonClick(e) {
   let numberSquares = window.prompt(
-    "Input the number of squares you want, needs to be maximum 100:"
+    "Input the number of squares you want, the maximum is 100:"
   );
   if (numberSquares > 100) {
     return;
