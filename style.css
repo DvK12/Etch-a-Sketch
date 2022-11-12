@@ -8,3 +8,7 @@
   padding-top: 25%;
   background-color: blue;
 }
+
+.hovered {
+  background-color: gray;
+}
