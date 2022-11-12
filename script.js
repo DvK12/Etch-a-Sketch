@@ -1,3 +1,5 @@
+// select all gridElements and then change their width and top padding from js
+
 const grid = document.querySelector("#grid");
 const myButton = document.createElement("button");
 
@@ -34,9 +36,14 @@ function removeAllChildNodes(parent) {
 }
 function generateGrid(numberSquares) {
   removeAllChildNodes(grid);
+  let percentageSquare = Math.floor(100 / numberSquares);
   for (let i = 0; i < numberSquares * numberSquares; i++) {
     let myDiv = document.createElement("div");
     myDiv.setAttribute("class", "gridElement");
+
+    myDiv.style.width = percentageSquare + "%";
+    myDiv.style.paddingTop = percentageSquare + "%";
+
     myDiv.addEventListener("mouseenter", onEnter);
     myDiv.addEventListener("mouseleave", onLeave);
     grid.appendChild(myDiv);
