@@ -19,14 +19,22 @@ function onButtonClick(e) {
   }
 }
 
+function getRandomNumber(number) {
+  return Math.floor(Math.random() * (number + 1));
+}
+function randomColor() {
+  return `rgb(${getRandomNumber(255)},${getRandomNumber(255)},${getRandomNumber(
+    255
+  )})`;
+}
 function onLeave(e) {
   selectedDiv = e.path[0];
-  selectedDiv.classList.toggle("hovered");
+  selectedDiv.style.backgroundColor = "blue";
 }
 
 function onEnter(e) {
   selectedDiv = e.path[0];
-  selectedDiv.classList.toggle("hovered");
+  selectedDiv.style.backgroundColor = randomColor();
 }
 
 function removeAllChildNodes(parent) {
@@ -42,7 +50,7 @@ function generateGrid(numberSquares) {
     myDiv.setAttribute("class", "gridElement");
 
     myDiv.style.width = percentageSquare + "%";
-    myDiv.style.paddingTop = percentageSquare + "%";
+    myDiv.style.paddingTop = percentageSquare / 2 + "%";
 
     myDiv.addEventListener("mouseenter", onEnter);
     myDiv.addEventListener("mouseleave", onLeave);
