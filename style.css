@@ -1,0 +1,10 @@
+#grid {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+.gridElement {
+  width: 25%;
+  padding-top: 25%;
+  background-color: blue;
+}
