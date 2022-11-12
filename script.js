@@ -21,11 +21,12 @@ function onButtonClick(e) {
 function getRandomNumber(number) {
   return Math.floor(Math.random() * (number + 1));
 }
-function randomColor() {
-  return `rgb(${getRandomNumber(255)},${getRandomNumber(255)},${getRandomNumber(
-    255
-  )})`;
-}
+
+//function randomColor() {
+//  return `rgb(${getRandomNumber(255)},${getRandomNumber(255)},${getRandomNumber(
+//    255
+//  )})`;
+//}
 
 function onLeave(e) {
   //selectedDiv = e.path[0];
@@ -40,8 +41,16 @@ function onEnter(e) {
     .split(",")
     [selectedDiv.style.backgroundColor.split(",").length - 1].slice(0, -1);
   let newOpacity = parseFloat(opacity) + 0.1;
-
-  selectedDiv.style.backgroundColor = `rgba(0,0,0,${Math.min(newOpacity, 1)})`;
+  if (selectedDiv.hasAttribute("black")) {
+    selectedDiv.style.backgroundColor = `rgba(0,0,0,1)`;
+  } else if (opacity == 0.9) {
+    selectedDiv.setAttribute("black");
+  } else {
+    selectedDiv.style.backgroundColor = `rgba(0,0,0,${Math.min(
+      newOpacity,
+      1
+    )})`;
+  }
 }
 
 function removeAllChildNodes(parent) {
@@ -51,6 +60,7 @@ function removeAllChildNodes(parent) {
 }
 function generateGrid(numberSquares) {
   removeAllChildNodes(grid);
+
   let percentageSquare = Math.round((100 / numberSquares) * 100) / 100;
   for (let i = 0; i < numberSquares * numberSquares; i++) {
     let myDiv = document.createElement("div");
